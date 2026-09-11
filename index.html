@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinkerNote</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./logo.png">
+</head>
+<body>    
+    <header class="header">
+        <h1>TinkerNote</h1>
+        <p>Select the subject(or create a new one) and start editing</p>
+    </header>
+    <section class="main">
+        <div class="subject-sect">
+            <label for="subject">Pick a subject: </label>
+            <select name="subject" id="subject">
+                <option value="none" class="option" selected disabled>None</option>
+            </select>||
+            <!-- <button onclick="addSubject()" class="addNew">+Add new</button>
+            <button onclick="delSubject()" class="delete">-Delete subject</button> -->
+            <button onclick="toggleSubMenu()">Edit Subjects⚙</button>
+        </div>
+        <div class="subPanel">
+            <div class="panel-head">
+                <label for="subjectName">Subject: |</label>
+                <h1 id="subjectName">None</h1>
+            </div>
+            
+            <div class="notepad">
+                <label for="newNote" class="note-label">Write new note:</label>
+                <textarea name="newNote" id="newNote" class="info" placeholder="new note e.g. a html is a markup language"></textarea>
+                <button onclick="addNote()" class="addNew" id="newNoteButton">+Add Note</button>
+            </div>
+        </div>
+        <h1 class="note-title"> _Notes_</h1>
+        <div id="notesSection">
+            <!-- <div class="note"><label class="date">Config</label> <span class="note-info">Select or add a new Subject to add notes</span ></div> -->
+        </div>
+        <p class="note-close">--No more notes--</p>
+        
+        <div id="editor" hidden>
+            <label for="editInp">Editor</label><br>
+            <textarea name="editInp" id="editInp"></textarea>
+            <div>
+                <button class="delete" onclick="toggleEditor()">cancel</button>
+                <button class="addNew" onclick="editNote()">confirm</button>
+            </div>
+        </div>
+        <div id="subjectMenu" hidden>
+            <button class="xButton" onclick="toggleSubMenu()">X</button>
+            <h1>Subjects/Titles</h1>
+            <button onclick="addSubject()" class="addNew">+Add new</button>
+            <div id="menuSubList">
+                <!--This is an example of how an item in the list would be constructed -->
+                <!-- <div class="menuSub">
+                        <span class="menuSubName">Subject name</span>
+                        <div>
+                            <button class="addNew">change name</button>
+                            <button class="delete">delete</button>
+                        </div>
+                </div>  -->
+            </div>
+        </div>
+    </section>
+
+
+    <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>

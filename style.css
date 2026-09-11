@@ -1,0 +1,238 @@
+/* colors: #000010(almost black), #00f0ff(cyan), #ff3300(red-orange), #f00(pure red) */
+/* ===== IMPORTANT STUFF =====*/
+[hidden] {
+    display: none !important;
+}
+/* ========================== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000010;
+    text-align: center;
+}
+.header{
+    padding: 1rem 1rem;
+    background-color: #000010;
+    width: 100%;
+    color: cyan;
+    font-size: 1rem;
+    border-bottom: solid 2px #00f0ff;
+    margin-bottom: 2vh;
+    position: fixed;
+    top: 0;
+}
+#subject{
+    background-color: #000010;
+    border-color: #00f0ff;
+    color: #00f0ff;
+    padding: 0.1rem;
+    min-width: 5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.addNew{
+    color: #000010;
+    border-color: #00f0ff;
+    font-weight: bold;
+    background-color: #00f0ff;
+    padding: 1px;   
+}
+.delete{
+    color: white;
+    border-color: #f00;
+    font-weight: bold;
+    background-color: #f00;
+    padding: 1px;
+}
+.main{
+    margin-top: 7.5rem;
+    color: white;
+    font-size: 1rem;
+}
+.subject-sect{
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(200, 255, 255, 0.2);
+    width: 80vw;
+    margin: auto;
+    flex-basis: 320px;
+    flex-wrap: wrap;
+}
+.panel-head{
+    display: flex;
+    margin: auto 0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-basis: 320px;
+    flex-wrap: wrap;
+
+    margin: 1rem 0;
+}
+.panel-head :first-child{
+    font-size: 1.5rem;
+}
+.panel-head :last-child{
+    font-size: 2rem;
+}
+.notepad{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 320px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.info{
+    max-width: 80vw;
+    min-width: 55vw;
+    border:solid 2px #00f0ff;
+    color: white;
+    background-color: #000010;
+    font-size: 1rem;
+    
+    resize: none; 
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word; 
+}
+.note-title{
+    color: #00f0ff;
+    border-bottom: solid 2px #00f0ff;
+    width: fit-content;
+    margin: 0 auto;
+}
+#notesSection{
+    width: 80vw;
+    margin: auto;
+}
+.note{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 5px 0;
+    display: flex;
+    text-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-basis: 500px;
+    /* margin-bottom: 2px; */
+}
+
+.note :first-child{
+    border-right: dotted 2px #00f0ff;
+    padding-right: 5px;
+}
+.note-info{
+    text-align: left;
+    margin-left: 5vw;
+    word-break: normal;
+    word-wrap: break-word;
+    text-wrap: wrap;
+}
+.note-close{
+    margin-top: 3vh;
+    font-size: 1rem;
+    color: darkgray;
+}
+#editor{
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid #ff3300;
+    background-color: rgba(100, 100, 100, 0.5);
+    text-align: center;
+    display: block;
+    align-content: center;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+#editor label{
+    font-weight: bold;
+    font-size: 2rem;
+}
+#editInp{
+    max-height: 80vh;
+    min-height: 60vh;
+    max-width: 95vw;
+    min-width: 80vw;
+    border:solid 2px #00f0ff;
+    color: white;
+    background-color: #000010;
+    font-size: 1rem;
+    
+    resize: both;
+    
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word; 
+}
+#subjectMenu{
+    max-width: 100vw;
+    max-height: 100vh;
+    width: 95vw;
+    height: 100vh;
+    margin: auto;
+    background-color: #000010;
+    border: 1px double gray;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word; 
+}
+.menuSub{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-basis: 320px;
+    border-bottom: 1px dashed rgba(100, 100, 100, 0.5);
+    padding: 10px;
+}
+.menuSubName {
+    /* width: 50vw; */
+    padding: 10px 15px;
+    margin-right: 10vw;
+    border-right: 2px solid #00f0ff;
+}
+.menuSub div{
+    gap: 10vw;
+    display: flex;
+}
+.menuSub button{
+    min-width: 10vw;
+    
+}
+.xButton{
+    background-color: #f00;
+    border-color: #f00;
+    width: 2rem;
+    height: 2rem;
+
+    color: white;
+
+    position: fixed;
+    /* 1. Moves the left edge of the child to 50% of the parent's width */
+    left: 90%;
+
+    /* transform: translate(50cqw, 0); */
+    
+}
