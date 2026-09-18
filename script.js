@@ -1,10 +1,12 @@
 const subjectData = JSON.parse(localStorage.getItem("6092026subData")) || {};
+const archiveData = JSON.parse(localStorage.getItem("12092026archiveData")) || {};
 const currentSub = document.querySelector("#subject");
 const subjectName = document.getElementById("subjectName");
 const notesSection = document.getElementById("notesSection");
 const editor = document.getElementById('editor');
 const editInp = document.getElementById('editInp');
-
+const notes_text = document.getElementsByClassName('note-info');
+const validChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-'];
 let editingIndex = null;
 
 
@@ -50,11 +52,15 @@ const addSubject = () => {
     if (!input) return; // Handle cancel button or empty values
 
     let newSub = cleanText(input.toUpperCase());
-    if (!newSub) return alert("Invalid subject name.");
-
+    if (!newSub) {return alert("Invalid subject name.");}
+    else if(!check_char(newSub)){
+        alert("Only letters and numbers are acceptable")
+        return;
+    }
     if (subjectData[newSub]) {
         alert("Subject already exists");
     } else {
+        archiveData[newSub] = { notes: []};
         subjectData[newSub] = { notes: [] };
         currentSub.innerHTML += `<option value="${newSub}" class="option">${newSub}</option>`;
         currentSub.value = newSub; // Auto-select the newly created subject
@@ -69,9 +75,10 @@ const addSubject = () => {
 const delSubject = (sub = cleanText(prompt("Subject name").toUpperCase())) => {
 
     if (subjectData[`${sub}`]) {
-        let proceed = confirm(`Are you sure you want to delete '${sub}'? It's data can NEVER be recovered`);
+        let proceed = confirm(`Are you sure you want to delete '${sub}'? It's data(including archived notes) can NEVER be recovered`);
         if (proceed) {
             delete subjectData[sub];
+            delete archiveData[sub];
             let optionToDelete = document.querySelector(`option[value=${sub}]`);
             if (sub == currentSub.value) {
                 currentSub.value = 'none';
@@ -108,8 +115,10 @@ const update = () => {
                         <div class="note">
                             <label class="date">${note.date} |</label>
                             <span class="note-info">${note.info}</span>
-                            <button class="delete" onclick="deleteNote(${i})">delete</button>
+                            <button onclick="toggleTextExpand(this)">+Expand</button>
                             <button class="addNew" onclick="toggleEditor(${i})">edit</button>
+                            <button class="delete" onclick="deleteNote(${i})">delete</button>
+                            <button class="delete" onclick="archiveNote(${i})">archive</button>
                         </div>`;
         });
     }
@@ -185,6 +194,7 @@ const editNote = () => {
 }
 const save = () => {
     localStorage.setItem("6092026subData", JSON.stringify(subjectData));
+    localStorage.setItem("12092026archiveData", JSON.stringify(archiveData));
 }
 const toggleSubMenu = () => {
     subjectMenu.hidden = !subjectMenu.hidden;
@@ -194,6 +204,10 @@ const editSubject = (sub) => {
     let newName = cleanText(prompt("New name:").toUpperCase());
     if (newName in subjectData) {
         alert("Name already used");
+        return;
+    }
+    if(!check_char(newName)){
+        alert('Only letters and numbers are valid');
         return;
     }
     const newKeyName = newName; // This can vary dynamically
@@ -208,8 +222,8 @@ const editSubject = (sub) => {
     if (optionToDelete) {
         optionToDelete.remove();
     }
+    currentSub.innerHTML += `<option value="${newName}" class="option">${newName}</option>`;
     if (currentSub.value == sub) {
-        currentSub.innerHTML += `<option value="${newName}" class="option">${newName}</option>`;
         currentSub.value = newName;
         subjectName.innerHTML = newName;
     }
@@ -218,4 +232,39 @@ const editSubject = (sub) => {
     save();
     update();
     updateSubMenu();
+}
+const toggleTextExpand = (button) => {
+    const relatedSpan = button.previousElementSibling;
+    if (relatedSpan.style.whiteSpace === 'pre-line') {
+        relatedSpan.style.whiteSpace = 'normal';
+        button.textContent = '+Expand'; // Optional: update button text
+    } else {
+        relatedSpan.style.whiteSpace = 'pre-line';
+        button.textContent = '-Contract';
+    }
+}
+const check_char = (words) => {
+    for (let c of words){
+        if(validChar.includes(c)){
+            continue
+        } else{
+            return false;
+        } 
+    }
+    return true;
+}
+const toggleUsageInfo = () => {
+    usageInfo.hidden = !usageInfo.hidden;
+}
+const archiveNote = (pos) => {
+    const activeNote = currentSub.value;
+    if(!confirm(`Are You sure you want to archive this note?`)){
+        alert('Canceled successfully');
+        return;
+    }
+    alert('Archived Successfully.')
+    archiveData[activeNote]['notes'].push(subjectData[activeNote]['notes'][pos]);
+    deleteNote(pos);
+    update();
+    save();
 }

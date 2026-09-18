@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive—TinkerNote</title>
+    <link rel="icon" href="./logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="arch-header">
+        <h1>Archive—TinkerNote</h1>
+        <p>Here You'll find your archive Notes</p>
+    </header>
+    <section class="main">
+        <div class="subject-sect">
+            <label for="subject">Subject/Topic: </label>
+            <select name="subject" id="subject" class="arch">
+                <option value="none" class="option" selected disabled>None</option>
+            </select>||
+            <a href="./index.html"><button class="addNew">Home</button></a>
+        </div>
+        <div class="subPanel">
+            <div class="panel-head">
+                <label for="subjectName">Subject: |</label>
+                <h1 id="subjectName">None</h1>
+            </div>
+            <h1 class="note-title arch"> _Archived_Notes_</h1>
+        </div>
+        <div id="notesSection">
+            <!-- <div class="note"><label class="date">Config</label> <span class="note-info">Select or add a new Subject to add notes</span ></div> -->
+        </div>
+        <p class="note-close">--No more archived notes for this selection--</p>
+        
+        <div id="editor" hidden>
+            <label for="editInp">Editor</label><br>
+            <textarea name="editInp" id="editInp"></textarea>
+            <div>
+                <button class="delete" onclick="toggleEditor()">cancel</button>
+                <button class="addNew" onclick="editNote()">confirm</button>
+            </div>
+        
+        </div>
+        <div id="usageInfo" hidden>
+            <button onclick="toggleUsageInfo()">x</button>
+            <h1>How To use</h1>
+            <ol type="1">
+                <li>Subjects cannot be added from the archive, if you want to add or delte them, click <a href="./index.html">here</a>.</li>
+                <li>Once added you can click the x button on the top-right and now you can switch between the preferred subject.</li>
+                <li>Once a subject has been selected, you can only view it's archived notes. To view other notes return to the main page</li>
+                <li>You can rename, delete, recover or expand(to show line breaks) the content of each note by clicking on its respective button.</li>    
+            </ol>
+            <p>-- All your data is saved locally --</p>
+        </div>
+        <span class="htu_toggle" onclick="toggleUsageInfo()">❓How To Use</span>
+    </section>
+
+    <script type="text/javascript" src="./archive_script.js"></script>
+</body>
+</html>

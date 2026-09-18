@@ -10,7 +10,7 @@
 <body>    
     <header class="header">
         <h1>TinkerNote</h1>
-        <p>Select the subject(or create a new one) and start editing</p>
+        <p>Helping you organize your plan an stay on top your activities</p>
     </header>
     <section class="main">
         <div class="subject-sect">
@@ -21,6 +21,7 @@
             <!-- <button onclick="addSubject()" class="addNew">+Add new</button>
             <button onclick="delSubject()" class="delete">-Delete subject</button> -->
             <button onclick="toggleSubMenu()">Edit Subjects⚙</button>
+            ||<a href="./archive.html"><button class="delete">Archive</button></a>
         </div>
         <div class="subPanel">
             <div class="panel-head">
@@ -63,6 +64,20 @@
                 </div>  -->
             </div>
         </div>
+        <div id="usageInfo" hidden>
+            <button onclick="toggleUsageInfo()">x</button>
+            <h1>How To use</h1>
+            <ol type="1">
+                <li>Click on the edit subject button and add a new subject/topic(note: only letters, numbers and hyphen are valid characters).</li>
+                <li>Once added you can click the x button on the top-right and now you can switch between the preferred subject.</li>
+                <li>Once a subject has been selected, add a note by filling in the text box with the content you want as the first note and then click on the add note button.</li>
+                <li>You can rename, delete or expand(to show line breaks) the content of each note by clicking on its respective button.</li>
+                <li>Once a note has been archived, it can only be viewed in the archive, it will not be deleted unless you want it to.</li>
+                <li>If a subject is deleted, it's notes(INCLUDING those in archive) are permanently deleted and cannt be recoverd.</li>
+            </ol>
+            <p>-- All your data is saved locally --</p>
+        </div>
+        <span class="htu_toggle" onclick="toggleUsageInfo()">❓How To Use</span>
     </section>
 
 

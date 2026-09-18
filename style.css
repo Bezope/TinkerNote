@@ -27,6 +27,17 @@ body{
     position: fixed;
     top: 0;
 }
+.arch-header{
+    padding: 1rem 1rem;
+    background-color: #000010;
+    width: 100%;
+    color: #ff3300;
+    font-size: 1rem;
+    border-bottom: solid 2px #ff3300;
+    margin-bottom: 2vh;
+    position: fixed;
+    top: 0;
+}
 #subject{
     background-color: #000010;
     border-color: #00f0ff;
@@ -234,5 +245,72 @@ body{
     left: 90%;
 
     /* transform: translate(50cqw, 0); */
-    
+}
+#usageInfo{
+    margin: auto;
+    background-color: rgb(20, 20, 30);
+    border: 2px solid white;
+    border-radius: 5%;
+    width: 40vw;
+    padding: 1rem;
+    padding-left: 1.1rem;
+
+    position: fixed;
+    top: 20%;
+    left: 25%;
+}
+#usageInfo ol{
+    text-align: left;
+}
+#usageInfo p{
+    color: rgb(155, 155, 180);
+}
+#usageInfo button{
+    background-color: #f00;
+    border-color: #f00;
+    width: 2rem;
+    height: 2rem;
+
+    color: white;
+
+    position: absolute;
+    /* 1. Moves the left edge of the child to 50% of the parent's width */
+    left: 80%;
+}
+@media (max-width: 768px) {
+    #usageInfo{
+        width: 90vw;
+        left: 5%;
+    }
+    #usageInfo button{
+        position: absolute;
+        left:85%;
+    }
+}
+.htu_toggle {
+    background-color: rgba(200, 255, 255, 0.5);
+    padding: 2px;
+    border-radius: 5%;
+    color: #000010;
+    font-weight: bold;
+    position: fixed;
+    font-size: 0.8rem;
+    top: 1%;
+    left: 5%;
+}
+.htu_toggle:hover{
+    cursor: pointer;
+}
+.arch{
+    color: #ff3300 !important;
+    border-color: #ff3300 !important;
+}
+a {
+    color: #00f0ff;
+    text-decoration: dashed;
+}
+a:hover{
+    text-transform: capitalize;
+    color: aqua;
+    font-weight: bold;
 }
