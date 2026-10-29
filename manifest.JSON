@@ -1,0 +1,15 @@
+{
+  "short_name": "MyApp",
+  "name": "My Static Web Application",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "500x500"
+    }
+  ],
+  "start_url": "/TinkerNote/",
+  "background_color": "#000010",
+  "display": "standalone",
+  "theme_color": "#000000"
+}
